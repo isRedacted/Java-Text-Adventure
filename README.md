@@ -1,3 +1,3 @@
 # Java-Text-Adventure
-A simple engine for text adventures /n
+A simple engine for text adventures  
 Includes a verb/command parser
