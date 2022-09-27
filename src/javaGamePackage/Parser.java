@@ -1,8 +1,10 @@
 package javaProject.src.javaGamePackage;
 
+import java.util.ArrayList;
+
 public class Parser {
 
-    public String parseInput(String input[], String commands[]) {
+    public String parseVerb(String input[], String commands[]) {
         //Set the verb counter
         int verbsFound = 0;
         //Initilize the parsed verb
@@ -25,5 +27,22 @@ public class Parser {
         else {
             return verb;
         }
+    }
+
+    public ArrayList<String> parseObjects(String[] inputList, Player player, Level currentLevel) {
+        ArrayList<String> parsedObjects = new ArrayList<>();
+        for (int i = 0; i < inputList.length; i++) {
+            if (inputList[i] = player.getInventory().get(i)) {
+                parsedObjects.add(player.getInventory().get(i));
+            }
+            else if (inputList[i] = currentLevel.getItems().get(i)) {
+                parsedObjects.add(currentLevel.getItems().get(i))
+            }
+        }
+        return parsedObjects;
+
+    }
+
+    public String inputCommand(String parsedVerb, ArrayList<String> parsedObjects) {
     }
 }

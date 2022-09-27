@@ -36,26 +36,17 @@ public class Game {
             //Split the user input into a string array
             String[] inputList = input.split(delims);
             //Get the verb/command from the user, check if there is one or if there's too many/none
-            String parsedInput = parser.parseInput(inputList, commands);
+            String parsedVerb = parser.parseVerb(inputList, commands);
+            ArrayList<String> parsedObjects = parser.parseObjects(inputList, player, map.get(player.getPlayerLocation()));
+            parser.inputCommand(parsedVerb, parsedObjects);
 
             //Interpret commands
             if (parsedInput != "") {
-               switch(parsedInput) {
-                    case("look"):
-                        //Get the description of the player's current room from the map array
-                        look();
-                        System.out.println(map.get(player.getPlayerLocation()).getDescription());
-                        break;
-                    case("pick"):
-                    case("grab"):
-                        pick();
-                        break;
-                    case("use"):
-                        use();
-                }
+                parser.inputCommand(parsedInput);
             }
         }
-        while(gameState == true);
+            while(gameState == true);
+
         //Did this because vscode was nagging me about it :/
         userInput.close();
     }
